@@ -14,23 +14,24 @@ module.exports = class extends Base {
    * 保存分类
    */
   async saveAction() {
-    let data = this.post();
+    const data = this.post();
+    // eslint-disable-next-line no-console
     console.log(data);
     if (think.isEmpty(data.id)) {
-      //保存
-      let res = await this.model("thinkjsplus_thing").add(data);
+      // 保存
+      const res = await this.model('thinkjsplus_thing').add(data);
       if (res) {
-        this.json({"succ":true});
+        this.json({'succ': true});
       } else {
-        this.json({"succ":false});
+        this.json({'succ': false});
       }
     } else {
-      //更新
-      let res = await this.model("thinkjsplus_thing").update(data);
+      // 更新
+      const res = await this.model('thinkjsplus_thing').update(data);
       if (res) {
-        this.json({"succ":true});
+        this.json({'succ': true});
       } else {
-        this.json({"succ":false});
+        this.json({'succ': false});
       }
     }
   }
@@ -46,14 +47,13 @@ module.exports = class extends Base {
    * 删除事情
    */
   async delAction() {
-    let thingModel = this.model("thinkjsplus_thing");
-    let posts = this.post("id");
-    let delNums = thingModel.where({id: ['IN', posts]}).delete();
-    if(delNums){
-        this.json({"succ":true});
-    }else{
-        this.json({"succ":false});
+    const thingModel = this.model('thinkjsplus_thing');
+    const posts = this.post('id');
+    const delNums = thingModel.where({id: ['IN', posts]}).delete();
+    if (delNums) {
+      this.json({'succ': true});
+    } else {
+      this.json({'succ': false});
     }
   }
-
 };

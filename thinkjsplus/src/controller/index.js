@@ -3,6 +3,7 @@ const Base = require('./base.js');
 module.exports = class extends Base {
   async indexAction() {
     const user = this.model('thinkjsplus_user'); // controller 里实例化模型
+    // eslint-disable-next-line no-unused-vars
     const data = await user.select();
     // let userinfo =await this.session('userinfo')
     // if (!think.isEmpty(userinfo)){  
@@ -10,7 +11,7 @@ module.exports = class extends Base {
     // }else{  
     //   return this.redirect('/admin/index');  
     // }  
-    this.assign('title',"测试网页之hello world!");
+    this.assign('title', '测试网页之hello world!');
     return this.display();
   }
   async welcomeAction() {

@@ -11,22 +11,22 @@ module.exports = class extends Base {
    * 保存分类
    */
   async saveAction() {
-    let data = this.post();
+    const data = this.post();
     if (think.isEmpty(data.id)) {
-      //保存
-      let res = await this.model("thinkjsplus_category").add(data);
+      // 保存
+      const res = await this.model('thinkjsplus_category').add(data);
       if (res) {
-        this.json({"succ":true});
+        this.json({'succ': true});
       } else {
-        this.json({"succ":false});
+        this.json({'succ': false});
       }
     } else {
-      //更新
-      let res = await this.model("thinkjsplus_category").update(data);
+      // 更新
+      const res = await this.model('thinkjsplus_category').update(data);
       if (res) {
-        this.json({"succ":true});
+        this.json({'succ': true});
       } else {
-        this.json({"succ":false});
+        this.json({'succ': false});
       }
     }
   }
@@ -34,13 +34,13 @@ module.exports = class extends Base {
    * 删除分类
    */
   async delAction() {
-    let categoryModel = this.model("thinkjsplus_category");
-    let posts = this.post("id");
-    let delNums = categoryModel.where({id: ['IN', posts]}).delete();
-    if(delNums){
-        this.json({"succ":true});
-    }else{
-        this.json({"succ":false});
+    const categoryModel = this.model('thinkjsplus_category');
+    const posts = this.post('id');
+    const delNums = categoryModel.where({id: ['IN', posts]}).delete();
+    if (delNums) {
+      this.json({'succ': true});
+    } else {
+      this.json({'succ': false});
     }
   }
   /**
