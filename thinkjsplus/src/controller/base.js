@@ -5,9 +5,10 @@ module.exports = class extends think.Controller {
     //   return;
     // }
     // 配置跨域
-    this.header('Access-Control-Allow-Origin', this.header('origin') || '*');
+    // this.header('Access-Control-Allow-Origin', this.header('origin') || '*');
+    this.header('Access-Control-Allow-Origin', '*');
     // 允许请求头参数进入
-    this.header('Access-Control-Allow-Headers', 'x-requested-with');
+    this.header('Access-Control-Allow-Headers', 'application/json; charset=utf-8');
     this.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
     const userinfo = await this.session('userinfo');
     if (this.method === 'OPTIONS') {
@@ -17,7 +18,8 @@ module.exports = class extends think.Controller {
     if (!think.isEmpty(userinfo)) {
       this.assign('userinfo', userinfo);
     } else {
-      return this.redirect('/admin/index');
+      // return this.redirect('/admin/index');
+      return userinfo;
     }
   }
 };
